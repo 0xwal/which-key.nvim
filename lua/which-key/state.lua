@@ -24,10 +24,8 @@ function M.safe(mode_change)
   local old, _new = unpack(vim.split(mode_change, ":", { plain = true }))
   if old == "c" then
     return false, "command-mode"
-  elseif vim.fn.reg_recording() ~= "" then
-    return false, "recording"
-  elseif vim.fn.reg_executing() ~= "" then
-    return false, "executing"
+  elseif Util.in_macro() then
+    return false, "macro"
   elseif mode_change:lower() == "v:v" then
     return false, "visual-block"
   end
@@ -300,7 +298,7 @@ function M.start(opts)
     Util.error({
       "Recursion detected.",
       "Are you manually loading which-key in a keymap?",
-      "Use `opts.triggers` instad.",
+      "Use `opts.triggers` instead.",
       "Please check the docs.",
     })
     Util.debug("recursion detected. Aborting")

@@ -2,7 +2,7 @@
 ---@field triggers {mappings: wk.Mapping[], modes: table<string,boolean>}
 local M = {}
 
-M.version = "3.13.2" -- x-release-please-version
+M.version = "3.13.3" -- x-release-please-version
 
 ---@class wk.Opts
 local defaults = {
@@ -29,7 +29,7 @@ local defaults = {
   -- Check the docs for more info.
   ---@type wk.Spec
   triggers = {
-    { "<auto>", mode = "nxsot" },
+    { "<auto>", mode = "nxso" },
   },
   -- Start hidden and wait for a key to be pressed before showing the popup
   -- Only used by enabled xo mapping modes.
@@ -125,7 +125,7 @@ local defaults = {
     group = "+", -- symbol prepended to a group
     ellipsis = "…",
     -- set to false to disable all mapping icons,
-    -- both those explicitely added in a mapping
+    -- both those explicitly added in a mapping
     -- and those from rules
     mappings = true,
     --- See `lua/which-key/icons.lua` for more details
